@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">email</th>
+        <th scope="col">username</th>
+        <th scope="col">Tel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usr of listusr">
+        <th scope="row"> {{usr.uid}}</th>
+        <td>{{usr.uemail}}</td>
+        <td>{{usr.username}}</td>
+        <td>{{usr.utel}}</td>
+      </tr>
+    </tbody>
+  </table>
