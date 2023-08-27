@@ -7,9 +7,9 @@ export class Utilisateur{
     username!:string
     unom!:string
     uprenom!:string
-    uemail!:string
+    email!:string
     utel!:number
-    umdp!:string
+    password!:string
     listroles!:Role[]
     p!:Panier
     adresse!:Adresse

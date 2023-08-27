@@ -25,11 +25,11 @@ export class UpdateproduitComponent implements OnInit{
  
   onSubmit(){
    this.prodService.updateProduit(this.id,this.produit).subscribe(data=>{
-    this.goToEquipeList();
+    this.goToProduitList();
  }, error => console.log(error));
   }
   
-  goToEquipeList(){
+  goToProduitList(){
     this.router.navigate(['/listproduit'])
   }
 }

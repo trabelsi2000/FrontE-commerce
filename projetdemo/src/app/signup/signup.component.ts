@@ -12,19 +12,18 @@ import { UtilisateurService } from '../services/utilisateur.service';
 export class SignupComponent implements OnInit{
 
   forminput!:FormGroup
-  us!:Utilisateur
   constructor(private fb:FormBuilder,private route:Router,private userserv:UtilisateurService){
   }
     
   
   ngOnInit(): void {
     this.forminput=this.fb.group(
-      { "uemail":["",[Validators.required,Validators.email]],
+      { "email":["",Validators.required],
         "username":["",Validators.required],
         "unom":["",Validators.required],
         "uprenom":["",Validators.required],
         "utel":["",Validators.required],
-        "umdp":["",Validators.required]
+        "password":["",Validators.required]
 
     })
   }
@@ -32,17 +31,18 @@ export class SignupComponent implements OnInit{
   register(){
     let usr = new Utilisateur()
 
-    usr.uemail= this.forminput.controls['uemail'].value
+    usr.email= this.forminput.controls['email'].value
     usr.username= this.forminput.controls['username'].value
     usr.unom= this.forminput.controls['unom'].value
     usr.uprenom= this.forminput.controls['uprenom'].value
     usr.utel= this.forminput.controls['utel'].value
-    usr.umdp= this.forminput.controls['umdp'].value   
+    usr.password= this.forminput.controls['password'].value   
    
-    this.userserv.ajouter(usr).subscribe(
-       (u)=>(
-        this.us=u
-       )
+    this.userserv.signup(usr).subscribe(
+      (us) => {
+        console.log(us);
+      },
+      (error) => console.log(error)
     )
    
    if(this.forminput.valid){

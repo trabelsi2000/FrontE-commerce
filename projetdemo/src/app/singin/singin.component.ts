@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UtilisateurService } from '../services/utilisateur.service';
 
 @Component({
   selector: 'app-singin',
@@ -10,19 +11,31 @@ import { Router } from '@angular/router';
 export class SinginComponent implements OnInit{
  
   forminput!:FormGroup
-  constructor(private fb:FormBuilder,private route:Router) {
+  constructor(private fb:FormBuilder,private route:Router,private userserv:UtilisateurService) {
     
   }
   ngOnInit(): void {
     this.forminput=this.fb.group(
-      {"email":["",[Validators.required,Validators.email]],
+      {"username":["",[Validators.required]],
       "password":["",Validators.required]
 
     })
   }
   onsubmit(){
     if(this.forminput.valid){
-      this.route.navigate(["/"])
+      this.userserv.connect(this.forminput.controls["username"].value,this.forminput.controls["password"].value).subscribe(
+        (authResult)=>{
+         this.userserv.saveuser(authResult.jwt,authResult.username,authResult.roles) 
+         if(authResult.roles.includes("ADMINISTRATEUR")){
+          this.route.navigate(["/listusers"])
+         }
+         else{this.route.navigate(["/headerclt"])}
+      });
+           
+         }
+        }
+ 
+     
     }
-  }
-}
+  
+

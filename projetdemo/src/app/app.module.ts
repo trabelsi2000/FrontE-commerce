@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SinginComponent } from './singin/singin.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ListusersComponent } from './listusers/listusers.component';
+import { ListusersComponent } from './gestionuser/listusers/listusers.component';
 import { ListrolesComponent } from './listroles/listroles.component';
 import { ListpaniersComponent } from './listpaniers/listpaniers.component';
 import { ListcommandesComponent } from './listcommandes/listcommandes.component';
@@ -27,6 +27,7 @@ import { AddimageComponent } from './gestionproduit/addimage/addimage.component'
 import { HeadercltComponent } from './headerclt/headerclt.component';
 import { ListproduitcategorieComponent } from './listproduitcategorie/listproduitcategorie.component';
 import { PanierComponent } from './panier/panier.component';
+import { UpdateuserComponent } from './gestionuser/updateuser/updateuser.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { PanierComponent } from './panier/panier.component';
     AddimageComponent,
     HeadercltComponent,
     ListproduitcategorieComponent,
-    PanierComponent
+    PanierComponent,
+    UpdateuserComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SinginComponent } from './singin/singin.component';
 import { SignupComponent } from './signup/signup.component';
-import { ListusersComponent } from './listusers/listusers.component';
+import { ListusersComponent } from './gestionuser/listusers/listusers.component';
 import { ListpaiementsComponent } from './listpaiements/listpaiements.component';
 import { ListpaniersComponent } from './listpaniers/listpaniers.component';
 import { ListcommandesComponent } from './listcommandes/listcommandes.component';
@@ -22,6 +22,7 @@ import { AddimageComponent } from './gestionproduit/addimage/addimage.component'
 import { HeadercltComponent } from './headerclt/headerclt.component';
 import { ListproduitcategorieComponent } from './listproduitcategorie/listproduitcategorie.component';
 import { PanierComponent } from './panier/panier.component';
+import { UpdateuserComponent } from './gestionuser/updateuser/updateuser.component';
 
 const routes: Routes = [
   {path:"header", component:HeaderComponent},
@@ -45,7 +46,8 @@ const routes: Routes = [
   {path:"addimage/:id", component:AddimageComponent},
   {path:"headerclt", component:HeadercltComponent},
   {path:"listproduitcategorie/:id", component:ListproduitcategorieComponent},
-  {path:"panier/:id", component:PanierComponent}
+  {path:"panier/:id", component:PanierComponent},
+  {path:"updateuser/:id", component:UpdateuserComponent}
 ];
 
 @NgModule({

@@ -5,6 +5,7 @@ import { CategorieService } from '../services/categorie.service';
 import { Route, Router } from '@angular/router';
 import { Utilisateur } from '../models/Utilisateur.model';
 import { Panier } from '../models/Panier.model';
+import { UtilisateurService } from '../services/utilisateur.service';
 
 @Component({
   selector: 'app-headerclt',
@@ -16,7 +17,7 @@ export class HeadercltComponent implements OnInit{
   categories: Categorie[] = [];
   panier!:Panier
   iduser!:number
-  constructor(private catserv:CategorieService,private Route:Router) {
+  constructor(private catserv:CategorieService,private Route:Router,private userserv:UtilisateurService) {
   }
 
   ngOnInit() {
@@ -30,6 +31,15 @@ export class HeadercltComponent implements OnInit{
   }
   goToPanier(id:number){
     this.Route.navigate(['/panier',id])
+  }
+  isConnected(){
+    return this.userserv.isConnected()
+  }
+  isAdmin(){
+    return this.userserv.isAdmin()
+  }
+  logout(){
+    this.userserv.logout()
   }
 }
   
