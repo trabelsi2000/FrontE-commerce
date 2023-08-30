@@ -11,8 +11,7 @@ export class AdresseService {
   constructor(private httpclt:HttpClient){
 
   }
-  getAllAdresses():Observable<Adresse[]>
-  {
-    return this.httpclt.get<Adresse[]>("http://localhost:3000/Adresse/")
+  addAdressToUser(iduser:number,adr:Adresse):Observable<Adresse>{
+    return this.httpclt.post<Adresse>(`http://localhost:8080/addAdressToUser/${iduser}`,adr)
   }
 }

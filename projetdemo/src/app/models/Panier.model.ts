@@ -5,8 +5,7 @@ import { Utilisateur } from "./Utilisateur.model"
 export class Panier{
 
     idpanier!:number
-    MontantTot!:number
+    montantTot!:number
     user!:Utilisateur
-    listcommandes!:Commande[]
     listprods!:Ligne_panier[]
 }

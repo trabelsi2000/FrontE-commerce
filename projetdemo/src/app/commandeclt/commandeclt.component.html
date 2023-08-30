@@ -1,0 +1,28 @@
+<div *ngIf="panier">
+    <h1>Commande Information</h1>
+
+    <h3>User Information</h3>
+    <p>Username: {{ panier.user.username }}</p>
+    <p>nom: {{ panier.user.unom }}</p>
+    <p>prenom: {{ panier.user.uprenom }}</p>
+    <p>num de tel: {{ panier.user.utel }}</p>
+    <p>email: {{ panier.user.email }}</p>
+
+    <h3>User Adress</h3>
+    <p>rue: {{ panier.user.adresse.rue }}</p>
+    <p>Ville: {{ panier.user.adresse.ville }}</p>
+    <p>pays: {{ panier.user.adresse.pays }}</p>
+    <p>code postal: {{ panier.user.adresse.codePostal }}</p>
+
+    <h3>Products in Panier</h3>
+    <ul>
+      <li *ngFor="let p of panier.listprods">
+          <p>le nom de produit : {{ p.prod.prodDescription }}</p>
+          <p>prix produit: {{ p.prod.prodPrix }}</p>
+          <p>la quantité: {{ p.qteAjoute }}</p>
+      </li>
+   </ul>
+    <p>Montant total: {{ panier.montantTot}}</p>
+    <button class="btn btn-success" (click)="confirmerCommande()">Confirmer commande</button>
+
+  </div>

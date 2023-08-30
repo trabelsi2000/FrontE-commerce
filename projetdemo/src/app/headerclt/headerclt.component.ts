@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Categorie } from '../models/Categorie.model';
 import { CategorieService } from '../services/categorie.service';
 import { Route, Router } from '@angular/router';
-import { Utilisateur } from '../models/Utilisateur.model';
 import { Panier } from '../models/Panier.model';
 import { UtilisateurService } from '../services/utilisateur.service';
+import { PanierService } from '../services/panier.service';
 
 @Component({
   selector: 'app-headerclt',
@@ -15,9 +14,10 @@ import { UtilisateurService } from '../services/utilisateur.service';
 export class HeadercltComponent implements OnInit{
 
   categories: Categorie[] = [];
-  panier!:Panier
   iduser!:number
-  constructor(private catserv:CategorieService,private Route:Router,private userserv:UtilisateurService) {
+  constructor(private catserv:CategorieService,private Route:Router,private userserv:UtilisateurService,private panserv:PanierService ) {
+    this.iduser = this.userserv.getUserId()
+    
   }
 
   ngOnInit() {
@@ -29,8 +29,13 @@ export class HeadercltComponent implements OnInit{
   goToProduitcategorie(id:number){
      this.Route.navigate(['/listproduitcategorie',id])
   }
-  goToPanier(id:number){
-    this.Route.navigate(['/panier',id])
+  
+  goToPanier(iduser:number){
+   if(iduser!)
+    {this.Route.navigate(['/panier',iduser])}
+    else{
+      this.Route.navigate(['/signin'])
+    }
   }
   isConnected(){
     return this.userserv.isConnected()
@@ -43,4 +48,3 @@ export class HeadercltComponent implements OnInit{
   }
 }
   
-

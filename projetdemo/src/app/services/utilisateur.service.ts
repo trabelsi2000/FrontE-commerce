@@ -3,15 +3,22 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Utilisateur } from '../models/Utilisateur.model';
 import { JwtResponse } from '../models/JwtResponse.model';
+import { Panier } from '../models/Panier.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilisateurService {
 
+
+  pan!:Panier
+  panier!: Panier;
   items= new BehaviorSubject(0);
   counter=0
-  constructor(private httpclt:HttpClient) { 
+  constructor(private httpclt:HttpClient, private Route:Router) { 
+    this.panier= new Panier()
+    this.pan= new Panier()
     this.items.subscribe(
       (x)=>{
         this.counter=x
@@ -45,10 +52,12 @@ export class UtilisateurService {
   connect(username:String,password:String):Observable<JwtResponse>{
     return this.httpclt.post<JwtResponse>("http://localhost:8080/signin",{username:username,password:password})
   }
-  saveuser(jwt:string,username:string,roles:string[]){
+  saveuser(jwt:string,username:string,id:number,roles:string[]){
     sessionStorage.setItem("jwt",jwt)
     sessionStorage.setItem("username",username)
+    sessionStorage.setItem("userId",JSON.stringify(id))
     sessionStorage.setItem("roles",JSON.stringify(roles))
+    sessionStorage.setItem("panier",JSON.stringify(this.panier))
   }
   logout(){
     sessionStorage.clear()
@@ -65,6 +74,18 @@ export class UtilisateurService {
     let roles:string[]=JSON.parse(sessionStorage.getItem("roles")!)
     
     return roles.includes("ADMINISTRATEUR");
+  }
+  signinReload(){
+    if(sessionStorage.getItem("jwt")){
+      this.Route.navigate(['/header']);
+    }
+  }
+  getUserId():number{
+   return JSON.parse(sessionStorage.getItem("userId")!);
+  }
+
+  addPanierToUser(pan:Panier, userId:number):Observable<Utilisateur>{
+    return this.httpclt.post<Utilisateur>(`http://localhost:8080/addpaniertouser/${userId}`,pan )  
   }
 }
 

@@ -1,1 +1,30 @@
-<p>panier works!</p>
+<h2>Panier</h2>
+<table class="table">
+
+<thead>
+<tr>
+    <th scope="col">quantité ajoutés</th>
+    <th scope="col">Prix</th>
+    <th scope="col">Marque</th>
+    <th scope="col">Description</th>
+    <th scope="col">taille</th>
+    <th scope="col">Couleur</th>
+</tr>
+</thead>
+<tbody>
+    <tr *ngFor="let p of panier.listprods"> 
+            <td><input type="number" [(ngModel)]="p.qteAjoute" (change)="modifierQuantiteAjoute(p.idlp,p.qteAjoute)" ></td>
+            <td>{{p.prod.prodPrix}}</td>
+            <td>{{p.prod.prodMarque}}</td>
+            <td>{{p.prod.prodDescription}}</td>
+            <td>{{p.prod.taille}}</td>
+            <td>{{p.prod.couleur}}</td>
+            <td><button class="btn btn-danger" (click)="deleteLignepanier(p.idlp)">Delete</button></td>
+    </tr>
+</tbody>
+</table>
+<p> le montant total :{{montantTotal}}</p>    
+<button class="btn btn-primary" (click)="goToAdresscommande(panier.idpanier)">Suivant</button>       
+
+
+

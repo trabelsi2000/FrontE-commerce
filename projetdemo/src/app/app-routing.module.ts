@@ -7,10 +7,7 @@ import { SinginComponent } from './singin/singin.component';
 import { SignupComponent } from './signup/signup.component';
 import { ListusersComponent } from './gestionuser/listusers/listusers.component';
 import { ListpaiementsComponent } from './listpaiements/listpaiements.component';
-import { ListpaniersComponent } from './listpaniers/listpaniers.component';
-import { ListcommandesComponent } from './listcommandes/listcommandes.component';
 import { ListlivraisonsComponent } from './listlivraisons/listlivraisons.component';
-import { ListadressesComponent } from './listadresses/listadresses.component';
 import { ListrolesComponent } from './listroles/listroles.component';
 import { AddcategorieComponent } from './gestioncategorie/addcategorie/addcategorie.component';
 import { ListcategorieComponent } from './gestioncategorie/listcategorie/listcategorie.component';
@@ -23,31 +20,34 @@ import { HeadercltComponent } from './headerclt/headerclt.component';
 import { ListproduitcategorieComponent } from './listproduitcategorie/listproduitcategorie.component';
 import { PanierComponent } from './panier/panier.component';
 import { UpdateuserComponent } from './gestionuser/updateuser/updateuser.component';
+import { authGuard } from './auth.guard';
+import { AdresscommandeComponent } from './adresscommande/adresscommande.component';
+import { CommandecltComponent } from './commandeclt/commandeclt.component';
+
 
 const routes: Routes = [
-  {path:"header", component:HeaderComponent},
+  {path:"header", component:HeaderComponent },
   {path:"footer", component:FooterComponent},
   {path:"", component:HomeComponent},
   {path:"signin", component:SinginComponent},
   {path:"signup", component:SignupComponent},
-  {path:"listusers", component:ListusersComponent},
+  {path:"listusers", component:ListusersComponent, canActivate:[authGuard]},
   {path:"listroles", component:ListrolesComponent},
   {path:"listpaiements", component:ListpaiementsComponent},
-  {path:"listpaniers", component:ListpaniersComponent},
-  {path:"listcommandes", component:ListcommandesComponent},
   {path:"listlivraisons", component:ListlivraisonsComponent},
-  {path:"listadresses", component:ListadressesComponent},
   {path:"addcategorie", component:AddcategorieComponent},
-  {path:"listcategorie", component:ListcategorieComponent},
-  {path:"updatecategorie/:id", component:UpdatecategorieComponent},
-  {path:"addproduit/:id", component:AddproduitComponent},
-  {path:"listproduit", component:ListproduitComponent},
-  {path:"updateproduit/:id", component:UpdateproduitComponent},
-  {path:"addimage/:id", component:AddimageComponent},
+  {path:"listcategorie", component:ListcategorieComponent, canActivate:[authGuard]},
+  {path:"updatecategorie/:id", component:UpdatecategorieComponent, canActivate:[authGuard]},
+  {path:"addproduit/:id", component:AddproduitComponent, canActivate:[authGuard]},
+  {path:"listproduit", component:ListproduitComponent, canActivate:[authGuard]},
+  {path:"updateproduit/:id", component:UpdateproduitComponent, canActivate:[authGuard]},
+  {path:"addimage/:id", component:AddimageComponent, canActivate:[authGuard]},
   {path:"headerclt", component:HeadercltComponent},
   {path:"listproduitcategorie/:id", component:ListproduitcategorieComponent},
-  {path:"panier/:id", component:PanierComponent},
-  {path:"updateuser/:id", component:UpdateuserComponent}
+  {path:"panier/:id", component:PanierComponent,canActivate:[authGuard] },
+  {path:"updateuser/:id", component:UpdateuserComponent, canActivate:[authGuard]},
+  {path:"adresscommande/:id", component:AdresscommandeComponent},
+  {path:"commandeclt/:id", component:CommandecltComponent, canActivate:[authGuard]}
 ];
 
 @NgModule({

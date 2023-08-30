@@ -11,8 +11,7 @@ export class CommandeService {
   constructor(private httpclt:HttpClient){
 
   }
-  getAllCommandes():Observable<Commande[]>
-  {
-    return this.httpclt.get<Commande[]>("http://localhost:3000/Commande/")
+  addCommandeToPanier(cmd:Commande,idpanier:number):Observable<Commande>{
+    return this.httpclt.post<Commande>(`http://localhost:8080/addcommande/${idpanier}`,cmd)
   }
 }

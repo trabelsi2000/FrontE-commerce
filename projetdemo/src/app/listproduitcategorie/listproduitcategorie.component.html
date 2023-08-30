@@ -8,6 +8,10 @@
      <div>
         <h4 class="card_title">{{prod.prodDescription}}</h4>
         <p class="card_text">Prix : {{prod.prodPrix}}</p>
+        
+     </div>
+     <div>
+      <button class="btn btn-secondary" (click)="addProduitToCart(this.userId , prod.prodref , 1)" >add to cart</button>
      </div>
     </div>
   </div>

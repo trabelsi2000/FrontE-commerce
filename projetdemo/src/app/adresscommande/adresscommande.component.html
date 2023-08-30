@@ -1,0 +1,25 @@
+<h3>Ajouter votre adresse</h3>
+<form class="form"  (ngSubmit)="onSubmit()">
+
+    <div class="mb-3" >
+        <label class="form-label">rue</label>
+        <input class="form-control" type="text" id="rue" [(ngModel)]="adress.rue" name="rue" >
+    </div>
+
+    <div class="mb-3" >
+        <label class="form-label">ville</label>
+        <input class="form-control" type="text" id="ville" [(ngModel)]="adress.ville" name="ville" >
+    </div>
+
+    <div class="mb-3" >
+        <label class="form-label">pays</label>
+        <input class="form-control" type="text" id="pays" [(ngModel)]="adress.pays" name="pays" >
+    </div>
+
+    <div class="mb-3" >
+        <label class="form-label">codePostal</label>
+        <input class="form-control" type="number" id="codePostal" [(ngModel)]="adress.codePostal" name="codePostal" >
+    </div>
+   
+    <button class="btn btn-primary" type="submit" >Suivant</button>
+</form>

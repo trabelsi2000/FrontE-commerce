@@ -12,9 +12,6 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListusersComponent } from './gestionuser/listusers/listusers.component';
 import { ListrolesComponent } from './listroles/listroles.component';
-import { ListpaniersComponent } from './listpaniers/listpaniers.component';
-import { ListcommandesComponent } from './listcommandes/listcommandes.component';
-import { ListadressesComponent } from './listadresses/listadresses.component';
 import { ListlivraisonsComponent } from './listlivraisons/listlivraisons.component';
 import { ListpaiementsComponent } from './listpaiements/listpaiements.component';
 import { AddcategorieComponent } from './gestioncategorie/addcategorie/addcategorie.component';
@@ -28,6 +25,8 @@ import { HeadercltComponent } from './headerclt/headerclt.component';
 import { ListproduitcategorieComponent } from './listproduitcategorie/listproduitcategorie.component';
 import { PanierComponent } from './panier/panier.component';
 import { UpdateuserComponent } from './gestionuser/updateuser/updateuser.component';
+import { AdresscommandeComponent } from './adresscommande/adresscommande.component';
+import { CommandecltComponent } from './commandeclt/commandeclt.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +38,6 @@ import { UpdateuserComponent } from './gestionuser/updateuser/updateuser.compone
     SignupComponent,
     ListusersComponent,
     ListrolesComponent,
-    ListpaniersComponent,
-    ListcommandesComponent,
-    ListadressesComponent,
     ListlivraisonsComponent,
     ListpaiementsComponent,
     AddcategorieComponent,
@@ -54,7 +50,9 @@ import { UpdateuserComponent } from './gestionuser/updateuser/updateuser.compone
     HeadercltComponent,
     ListproduitcategorieComponent,
     PanierComponent,
-    UpdateuserComponent
+    UpdateuserComponent,
+    AdresscommandeComponent,
+    CommandecltComponent
   ],
   imports: [
     BrowserModule,
