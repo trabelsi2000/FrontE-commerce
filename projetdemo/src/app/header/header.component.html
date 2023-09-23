@@ -1,30 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-primary bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item dropdown">
-          <a class="nav-link" routerLink="/listcategorie">
-           Gestion Categorie
-          </a>
-      </li>
-      <li class="nav-item dropdown">
-          <a class="nav-link" routerLink="/listproduit">
-           Gestion Produit
-          </a>
-      </li>
-
-    </ul>
-    <ul  class="navbar-nav">
-      <li class="nav-item active"  *ngIf="isConnected()">
-          <a class="nav-link" (click)="logout()">Logout</a>
-      </li>
-    </ul>
-  </div>
+<nav class="navbar">
+  <div class="brand"><img routerLink="/homeadmin" src="assets/logoproj.png"></div>
+  <ul class="nav-links">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/listcategorie">Gestion des Categories</a></li>
+    <li><a routerLink="/listproduit">Gestion des Produits</a></li>
+    <li><a routerLink="/listcommandeadmin">Gestion des Commandes</a></li>
+    <li><a routerLink="/listusers">Gestion des utilisateurs</a></li>
+  </ul>
+  <ul class="nav-links" *ngIf="isConnected()">
+    <li><a (click)="logout()">Logout</a></li>
+  </ul>
 </nav>
-

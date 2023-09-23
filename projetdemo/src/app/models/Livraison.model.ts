@@ -1,9 +1,11 @@
-import { Paiement } from "./Paiement.model"
+import { Commande } from "./Commande.model"
+
 
 export class Livraison{
-    idL!:number
+    idliv!:number
     etatLiv!:string
     fraisLiv!:number
+    prixtot!:number
     delaisLiv!:string
-    paiement!:Paiement
+    commande!:Commande
 }

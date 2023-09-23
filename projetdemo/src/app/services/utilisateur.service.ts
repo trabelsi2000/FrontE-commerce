@@ -52,12 +52,14 @@ export class UtilisateurService {
   connect(username:String,password:String):Observable<JwtResponse>{
     return this.httpclt.post<JwtResponse>("http://localhost:8080/signin",{username:username,password:password})
   }
-  saveuser(jwt:string,username:string,id:number,roles:string[]){
+  saveuser(jwt:string,username:string,email:string,id:number,roles:string[]){
     sessionStorage.setItem("jwt",jwt)
     sessionStorage.setItem("username",username)
+    sessionStorage.setItem("email",email)
     sessionStorage.setItem("userId",JSON.stringify(id))
     sessionStorage.setItem("roles",JSON.stringify(roles))
     sessionStorage.setItem("panier",JSON.stringify(this.panier))
+    
   }
   logout(){
     sessionStorage.clear()
@@ -86,6 +88,13 @@ export class UtilisateurService {
 
   addPanierToUser(pan:Panier, userId:number):Observable<Utilisateur>{
     return this.httpclt.post<Utilisateur>(`http://localhost:8080/addpaniertouser/${userId}`,pan )  
+  }
+  clearPanierFromUser(iduser:number):Observable<Utilisateur>{
+    return this.httpclt.delete<Utilisateur>(`http://localhost:8080/clearPanierFromUser/${iduser}`)
+  }
+
+  getUserByEmail(email:String):Observable<Utilisateur>{
+    return this.httpclt.get<Utilisateur>(`http://localhost:8080/getUserByEmail/${email}`)
   }
 }
 

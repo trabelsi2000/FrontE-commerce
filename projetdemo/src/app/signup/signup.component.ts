@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Utilisateur } from '../models/Utilisateur.model';
 import { UtilisateurService } from '../services/utilisateur.service';
@@ -23,11 +23,27 @@ export class SignupComponent implements OnInit{
         "unom":["",Validators.required],
         "uprenom":["",Validators.required],
         "utel":["",Validators.required],
-        "password":["",Validators.required]
+        "password":["",Validators.required],
+        "confirmPassword": ['', [Validators.required]]
 
+    }, {
+      validator: this.passwordMatchValidator
     })
   }
-
+  passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+  
+    if (!password || !confirmPassword) {
+      return null; // No validation if controls are null
+    }
+  
+    if (password.value !== confirmPassword.value) {
+      return { 'passwordMismatch': true };
+    }
+  
+    return null;
+  }
   register(){
     let usr = new Utilisateur()
 

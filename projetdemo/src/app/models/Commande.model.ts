@@ -1,10 +1,15 @@
-import { Paiement } from "./Paiement.model"
+import { Livraison } from "./Livraison.model"
 import { Panier } from "./Panier.model"
 
 export class Commande{
-    CmdId!:number
-    CmdDate!:Date
+    cmdId!:number
+    cmdDate!:Date
     etatCmd!:string
+    nomUtil!:String
+    nom!:String
+    prenom!:String
+    emailadr!:String
+    tel!:number
     pan!:Panier
-    paiement!:Paiement
+    livraison!:Livraison
 }

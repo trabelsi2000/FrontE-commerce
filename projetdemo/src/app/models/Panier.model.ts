@@ -7,5 +7,6 @@ export class Panier{
     idpanier!:number
     montantTot!:number
     user!:Utilisateur
+    cmd!:Commande
     listprods!:Ligne_panier[]
 }

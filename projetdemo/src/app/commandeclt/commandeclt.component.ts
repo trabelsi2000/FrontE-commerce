@@ -5,6 +5,9 @@ import { Panier } from '../models/Panier.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PanierService } from '../services/panier.service';
 import { UtilisateurService } from '../services/utilisateur.service';
+import { Utilisateur } from '../models/Utilisateur.model';
+import { Livraison } from './../models/Livraison.model';
+import { LivraisonService } from '../services/livraison.service';
 
 @Component({
   selector: 'app-commandeclt',
@@ -13,9 +16,10 @@ import { UtilisateurService } from '../services/utilisateur.service';
 })
 export class CommandecltComponent implements OnInit {
   panierId!:number;
-  userId!: number; // Retrieve this from session storage
-  panier:Panier=new Panier(); // Replace 'any' with the actual type of your panier object
+  userId!: number; 
+  panier:Panier=new Panier(); 
   cmd:Commande=new Commande();
+  user!:Utilisateur
   constructor(
     private route: ActivatedRoute,
     private router:Router,
@@ -31,7 +35,9 @@ export class CommandecltComponent implements OnInit {
     this.loadUser();
   }
   loadUser(){
-     this.userserv.getUserById(this.userId).subscribe(()=>{})
+     this.userserv.getUserById(this.userId).subscribe((data)=>{
+      this.user=data
+     })
   }
 
   loadPanierDetails() {
@@ -46,7 +52,12 @@ export class CommandecltComponent implements OnInit {
   }
   confirmerCommande(){
     this.cmd.etatCmd="en_cours"
-    this.cmdserv.addCommandeToPanier(this.cmd,this.panierId).subscribe(()=>{})
-    this.router.navigate(['/headerclt'])
+    this.cmd.nom=this.user.unom
+    this.cmd.prenom=this.user.uprenom
+    this.cmd.emailadr=this.user.email
+    this.cmd.tel=this.user.utel
+    this.cmd.nomUtil=this.user.username
+    this.cmdserv.addCommandeToPanier(this.cmd,this.panierId).subscribe((data)=>{this.cmd=data})
+    this.router.navigate(['/addlivraison',this.panierId])
   }
 }

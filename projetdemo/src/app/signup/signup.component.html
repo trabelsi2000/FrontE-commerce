@@ -1,13 +1,15 @@
 <form [formGroup]="forminput" class="row g-3">
+    <div class="brand"><img src="assets/logoproj.png"></div>
+    <h1 style="text-align: center;">Créez votre compte</h1>
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
       <input type="email" class="form-control" id="inputEmail4" placeholder="nano@exemple.com" formControlName="email">
     </div>
-    <div class="col-12">
+    <div class="col-md-6">
       <label for="inputUsername" class="form-label">Username</label>
       <input type="text" class="form-control" id="inputUsername" formControlName="username">
     </div>
-    <div class="col-12">
+    <div class="col-md-6">
       <label for="inputNom" class="form-label">Nom</label>
       <input type="text" class="form-control" id="inputNom" formControlName="unom">
     </div>
@@ -23,8 +25,14 @@
       <label for="inputPassword4" class="form-label">Mot de passe</label>
       <input type="password" class="form-control" id="inputPassword4" placeholder="Password" formControlName="password">
     </div>
-  
+    <div class="col-md-6">
+      <label for="inputConfirmPassword" class="form-label">Confirmer le mot de passe</label>
+      <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" formControlName="confirmPassword">
+    </div>
     <div class="col-12">
-      <input type="submit" (click)="register()" value="sign in">
+      <input type="submit" (click)="register()" value="Enregistrer">
+    </div>
+    <div class="col-md-12">
+      <p>Vous avez déjà un compte? <a routerLink="/signin">Se connecter</a></p>
     </div>
   </form>

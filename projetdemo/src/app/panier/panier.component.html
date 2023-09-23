@@ -1,3 +1,4 @@
+<app-headerclt></app-headerclt>
 <h2>Panier</h2>
 <table class="table">
 
@@ -6,9 +7,10 @@
     <th scope="col">quantité ajoutés</th>
     <th scope="col">Prix</th>
     <th scope="col">Marque</th>
-    <th scope="col">Description</th>
+    <th scope="col">Nom</th>
     <th scope="col">taille</th>
     <th scope="col">Couleur</th>
+    <th scope="col">Action</th>
 </tr>
 </thead>
 <tbody>
@@ -19,7 +21,7 @@
             <td>{{p.prod.prodDescription}}</td>
             <td>{{p.prod.taille}}</td>
             <td>{{p.prod.couleur}}</td>
-            <td><button class="btn btn-danger" (click)="deleteLignepanier(p.idlp)">Delete</button></td>
+            <td><button class="btn btn-danger" (click)="deleteLignepanier(p.idlp)">supprimer</button></td>
     </tr>
 </tbody>
 </table>

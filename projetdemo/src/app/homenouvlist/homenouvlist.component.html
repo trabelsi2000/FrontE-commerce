@@ -1,0 +1,14 @@
+<h1>  {{categorie.catlib}} </h1>
+<div class="card-container">
+  <div *ngFor="let prod of listproduits" class="cardBlog">
+    <div class="a">
+      <div>
+        <img class="cards_img" src="/assets/{{prod.img.imageLib}}" />
+        <h4 class="card_title">{{prod.prodDescription}}</h4>
+        <p class="card_text">Prix : {{prod.prodPrix}}</p>
+        <p class="card_text">disponibilité : {{prod.prodDispo}}</p>
+        <button class="btn btn-primary" (click)="addProduitToCart(this.userId , prod.prodref , 1)" >Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</div>

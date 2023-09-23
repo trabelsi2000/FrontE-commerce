@@ -11,8 +11,13 @@ export class LivraisonService {
   constructor(private httpclt:HttpClient){
 
   }
-  getAllLivraisons():Observable<Livraison[]>
-  {
-    return this.httpclt.get<Livraison[]>("http://localhost:3000/Livraison/")
+  getAllLivraison():Observable<Livraison[]>{
+    return this.httpclt.get<Livraison[]>("http://localhost:8080/getalllivraison")
+  }
+  addLivraisonToCommande(liv:Livraison,idcmd:number):Observable<Livraison>{
+    return this.httpclt.post<Livraison>(`http://localhost:8080/addlivraisonToCommande/${idcmd}`,liv)
+  }
+  clearLivraisonAndCommande(idliv:number):Observable<object>{
+    return this.httpclt.delete<object>(`http://localhost:8080/clearLivraisonAndCommande/${idliv}`)
   }
 }

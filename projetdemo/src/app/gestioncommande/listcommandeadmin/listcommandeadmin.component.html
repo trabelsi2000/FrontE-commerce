@@ -1,0 +1,44 @@
+<div class="centered-container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h3>La liste des commandes</h3>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">la date de la commande</th>
+                  <th scope="col">l'etat de la commande</th>
+                  <th scope="col">nom</th>
+                  <th scope="col">prenom</th>
+                  <th scope="col">email</th>
+                  <th scope="col">tel</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of listcmd">
+                  <td>{{ c.cmdId }}</td>
+                  <td>{{ c.cmdDate }}</td>
+                  <td><input type="text" [(ngModel)]="c.etatCmd" (change)="updateCommande(c.cmdId, c.etatCmd)" /></td>
+                  <td>{{ c.nom }}</td>
+                  <td>{{ c.prenom }}</td>
+                  <td>{{ c.emailadr }}</td>
+                  <td>{{ c.tel }}</td>
+                  <td><button class="btn btn-danger" (click)="deleteCommande(c.cmdId)">Supprimer Commande</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-success" (click)="goToLivraisonlist()">Voir la Liste des livraisons</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

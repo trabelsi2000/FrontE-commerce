@@ -1,27 +1,34 @@
-<h2>Categorie List</h2>
-<table class="table">
-
-<thead>
-<tr>
-    <th>Nom</th>
-    <th>List produits</th>
-    
-   
-</tr>
-
-</thead>
-
-<tbody>
-    <tr *ngFor="let Cat of categories" >
-        <td>{{Cat.catlib}}</td>
-        <td *ngFor="let prod of Cat.listproduits">
-            {{ prod.prodref }} {{ prod.prodPrix }} {{ prod.prodMarque }} {{ prod.prodDescription }} {{ prod.prodQte }} {{prod.prodDispo}} {{prod.taille}} {{prod.couleur}}
-        </td>
-        <td><button class="btn btn-primary" (click)="addProductToCategorie(Cat.catid)">Add produit</button></td>
-        <td><button class="btn btn-success" (click)="updateCategorie(Cat.catid)">Update Categorie</button></td>
-        <td><button class="btn btn-danger" (click)="deleteCategorie(Cat.catid)">Delete Categorie</button></td>
-    </tr>
-</tbody>
-
-</table>
-<button style=" width: 500px; margin-left: 500px;margin-top: 20px;margin-bottom: 50px;" class="btn btn-warning"  (click)="goToAddCategorie()" routerLink="/addcategorie">Add Categorie</button>
+<div class="centered-container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Liste des catégories</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Actions</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let Cat of categories">
+                                <td>{{ Cat.catlib }}</td>
+                                <td><button class="btn btn-primary" (click)="addProductToCategorie(Cat.catid)">Ajouter produit</button></td>
+                                <td><button class="btn btn-success" (click)="updateCategorie(Cat.catid)">Modifier Catégorie</button></td>
+                                <td><button class="btn btn-danger" (click)="deleteCategorie(Cat.catid)">Supprimer Catégorie</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-button text-center">
+                    <button class="btn btn-warning" (click)="goToAddCategorie()" routerLink="/addcategorie">Ajouter Catégorie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

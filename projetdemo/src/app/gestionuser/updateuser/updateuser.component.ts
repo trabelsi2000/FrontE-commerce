@@ -17,7 +17,7 @@ export class UpdateuserComponent implements OnInit{
   ngOnInit(): void {
     this.user=new Utilisateur;
     this.id=this.route.snapshot.params['id'];
-
+    
    this.userserv.getUserById(this.id).subscribe(data =>{
     this.user=data;
    }, error => console.log(error));

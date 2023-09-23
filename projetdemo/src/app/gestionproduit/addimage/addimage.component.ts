@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProduitService } from 'src/app/services/produit.service';
 
 @Component({
   selector: 'app-addimage',
@@ -7,23 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddimageComponent implements OnInit {
 
-  constructor(){
+  id!:number
+  constructor(private prodserv:ProduitService,private route:ActivatedRoute){
 
   }
   ngOnInit(): void {
-    
+    this.id=this.route.snapshot.params['id'];
   }
-  onFileChange(event: any) {
-    const selectedFile: File = event.target.files[0];
-
-    if (selectedFile) {
-      console.log('Selected file:', selectedFile.name);
-      // You can now use the selected file
+  onFileSelected(event: any, id: number) {
+    const file = event.target.files[0];
+    if (file) {
+      this.prodserv.addImageToProduct(this.id, file).subscribe(
+        (response) => {
+          // Handle the response from the Spring Boot service
+          console.log('Image uploaded successfully:', response);
+        },
+        (error) => {
+          // Handle any errors
+          console.error('Error uploading image:', error);
+        }
+      );
     }
-  }
-
-  selectFile() {
-    // Trigger file input click event
-    document.getElementById('fileInput')?.click();
   }
 }

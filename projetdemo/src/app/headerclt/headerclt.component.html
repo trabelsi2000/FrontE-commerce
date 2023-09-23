@@ -1,26 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-primary bg-primary">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul  class="navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-        </li>
-      </ul>
-      <ul  *ngFor="let category of categories">
-        <li class="nav-item " ><a (click)="goToProduitcategorie(category.catid)">{{ category.catlib }}</a></li>
-      </ul>
-    
-      <ul >
-        <li class="nav-item"   ><a (click)="goToPanier(iduser)" >panier</a></li>
-      </ul>
+<nav class="navbar">
+  <div class="brand"><img routerLink="/" src="assets/logoproj.png"></div>
+  <ul class="nav-links">
+    <li *ngFor="let category of categories">
+      <a (click)="goToProduitcategorie(category.catid)">{{ category.catlib }}</a>
+    </li>
+    <li><a (click)="goToPanier(iduser)">Panier</a></li>
+    <li><a (click)="goToLivraisons()">Voir livraisons</a></li>
+    <li *ngIf="isConnected()"><a (click)="voirMonCompte()">Mon compte</a></li>
+    <li *ngIf="isConnected()"><a (click)="logout()">Logout</a></li>
+    <li *ngIf="!isConnected()"><a routerLink="/signin">Sign In</a></li>
 
-      <ul  class="navbar-nav">
-        <li class="nav-item active"  *ngIf="isConnected()">
-            <a class="nav-link" (click)="logout()">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  </ul>
+</nav>

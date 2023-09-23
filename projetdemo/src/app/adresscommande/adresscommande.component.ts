@@ -11,26 +11,30 @@ import { Commande } from './../models/Commande.model';
 })
 export class AdresscommandeComponent implements OnInit{
 
-  cmd:Commande=new Commande()
-  adress:Adresse= new Adresse();
+  cmd!:Commande
+  adress!:Adresse
   id!:number
+  iduser!:number
   constructor(private route:ActivatedRoute,private router:Router,private adressserv:AdresseService){
 
   }
   ngOnInit(): void {
-    
-  }
-  saveAdress(){
+    this.cmd=new Commande()
+    this.adress= new Adresse();
     this.id=this.route.snapshot.params['id'];
-    this.adressserv.addAdressToUser(this.id,this.adress).subscribe(() =>{})
-    this.confirmAdress();
+    this.iduser=JSON.parse(sessionStorage.getItem("userId")!)
+    this.adressserv.getAdressById(this.iduser).subscribe(data =>{
+      this.adress=data;
+     }, error => console.log(error));
   }
 
   onSubmit(){
-    this.saveAdress();
-  };
+    this.adressserv.updateAdressFromUser(this.iduser,this.adress).subscribe(data=>{
+      this.confirmAdress();
+    }, error => console.log(error));
+  }
+
   confirmAdress(){
-      
       this.router.navigate(['/commandeclt',this.id])
   }
 }

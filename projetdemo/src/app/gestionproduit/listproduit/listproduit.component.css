@@ -1,0 +1,75 @@
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Makes the container take up the full viewport height */
+}
+
+.card {
+  width: 1350px; /* Adjust the card's width */
+  height: auto; /* Adjust the card's height */
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the card header */
+.card-header {
+  background-color: #ffa34e;
+  color: #fff;
+  padding: 15px;
+  border-bottom: none;
+}
+
+/* Style the card title */
+.card-header h3 {
+  margin: 0;
+}
+
+/* Style the card body */
+.card-body {
+  padding: 20px;
+}
+
+/* Style the table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+/* Style the table headings */
+.table th {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style the table rows */
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+  
+.btn-success {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #000000;
+}
+
+.btn-danger {
+  background-color: #c82333;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #000000;
+}
+

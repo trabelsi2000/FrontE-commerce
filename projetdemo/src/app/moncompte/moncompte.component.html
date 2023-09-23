@@ -1,0 +1,35 @@
+
+<form class="form"  (ngSubmit)="onSubmit()">
+    <div style="margin: 40px;" class="brand"><img src="assets/logoproj.png"></div>
+    <h1 style="text-align: center;"> Vos informations personnelles</h1>
+    <div class="mb-3" >
+        <label class="form-label">Email</label>
+        <input class="form-control" type="email" id="email" [(ngModel)]="user.email" name="email" >
+    </div>
+
+    <div class="mb-3" >
+        <label class="form-label">Username</label>
+        <input class="form-control" type="text" id="username" [(ngModel)]="user.username" name="username" >
+    </div>
+
+    <div class="mb-3" >
+        <label class="form-label">Nom</label>
+        <input class="form-control" type="text" id="nom" [(ngModel)]="user.unom" name="nom" >
+    </div>
+
+    <div class="mb-3" >
+        <label class="form-label">Prenom</label>
+        <input class="form-control" type="text" id="prenom" [(ngModel)]="user.uprenom" name="prenom" >
+    </div>
+
+    <div class="mb-3" >
+        <label class="form-label">numéro de telephone</label>
+        <input class="form-control" type="number" id="tel" [(ngModel)]="user.utel" name="tel" >
+    </div>
+    
+    <div class="button-container">
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        <button class="btn btn-danger" (click)="goTomodifmdp()" type="submit">Modifier mot de passe</button>
+    </div>
+    
+</form>

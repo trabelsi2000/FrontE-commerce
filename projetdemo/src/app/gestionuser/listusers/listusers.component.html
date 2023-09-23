@@ -1,24 +1,42 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">email</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Prénom</th>
-        <th scope="col">username</th>
-        <th scope="col">Tel</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let usr of listusr">
-        <th scope="row"> {{usr.uid}}</th>
-        <td>{{usr.email}}</td>
-        <td>{{usr.unom}}</td>
-        <td>{{usr.uprenom}}</td>
-        <td>{{usr.username}}</td>
-        <td>{{usr.utel}}</td>
-        <td><button class="btn btn-success" (click)="updateUser(usr.uid)">Update user</button></td>
-        <td><button class="btn btn-danger" (click)="deleteUser(usr.uid)">Delete user</button></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="centered-container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h3>La liste des utilisateurs</h3>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Prénom</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Téléphone</th>
+                  <th scope="col">Actions</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let usr of listusr">
+                  <td>{{ usr.uid }}</td>
+                  <td>{{ usr.email }}</td>
+                  <td>{{ usr.unom }}</td>
+                  <td>{{ usr.uprenom }}</td>
+                  <td>{{ usr.username }}</td>
+                  <td>{{ usr.utel }}</td>
+                  <td class="action-buttons"> <button  class="btn btn-success" (click)="updateUser(usr.uid)">Modifier</button></td>
+                  <td class="action-buttons">  <button class="btn btn-danger" (click)="deleteUser(usr.uid)">Supprimer</button></td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

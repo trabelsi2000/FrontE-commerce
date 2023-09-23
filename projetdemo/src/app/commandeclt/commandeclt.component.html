@@ -1,28 +1,36 @@
-<div *ngIf="panier">
+<form class="container">
+  <div *ngIf="panier" class="content">
+    <div style="margin: 40px;" class="brand"><img src="assets/logoproj.png"></div>
     <h1>Commande Information</h1>
 
-    <h3>User Information</h3>
-    <p>Username: {{ panier.user.username }}</p>
-    <p>nom: {{ panier.user.unom }}</p>
-    <p>prenom: {{ panier.user.uprenom }}</p>
-    <p>num de tel: {{ panier.user.utel }}</p>
-    <p>email: {{ panier.user.email }}</p>
+    <div class="user-info">
+      <h3>User Information</h3>
+      <p><strong>Username:</strong> {{ panier.user.username }}</p>
+      <p><strong>nom:</strong> {{ panier.user.unom }}</p>
+      <p><strong>prenom:</strong> {{ panier.user.uprenom }}</p>
+      <p><strong>num de tel:</strong> {{ panier.user.utel }}</p>
+      <p><strong>email:</strong> {{ panier.user.email }}</p>
+    </div>
 
-    <h3>User Adress</h3>
-    <p>rue: {{ panier.user.adresse.rue }}</p>
-    <p>Ville: {{ panier.user.adresse.ville }}</p>
-    <p>pays: {{ panier.user.adresse.pays }}</p>
-    <p>code postal: {{ panier.user.adresse.codePostal }}</p>
+    <div class="user-address">
+      <h3>User Address</h3>
+      <p><strong>rue:</strong> {{ panier.user.adresse.rue }}</p>
+      <p><strong>Ville:</strong> {{ panier.user.adresse.ville }}</p>
+      <p><strong>pays:</strong> {{ panier.user.adresse.pays }}</p>
+      <p><strong>code postal:</strong> {{ panier.user.adresse.codePostal }}</p>
+    </div>
 
-    <h3>Products in Panier</h3>
-    <ul>
-      <li *ngFor="let p of panier.listprods">
-          <p>le nom de produit : {{ p.prod.prodDescription }}</p>
-          <p>prix produit: {{ p.prod.prodPrix }}</p>
-          <p>la quantité: {{ p.qteAjoute }}</p>
-      </li>
-   </ul>
-    <p>Montant total: {{ panier.montantTot}}</p>
+    <div class="products">
+      <h3>Products in Panier</h3>
+      
+        <div *ngFor="let p of panier.listprods">
+          <p><strong>le nom de produit :</strong> {{ p.prod.prodDescription }}</p>
+          <p><strong>prix produit:</strong> {{ p.prod.prodPrix }}</p>
+          <p><strong>la quantité:</strong> {{ p.qteAjoute }}</p>
+        </div>
+      
+    </div>
+    <p class="total-amount"><strong>Montant total:</strong> {{ panier.montantTot}}</p>
     <button class="btn btn-success" (click)="confirmerCommande()">Confirmer commande</button>
-
   </div>
+</form>

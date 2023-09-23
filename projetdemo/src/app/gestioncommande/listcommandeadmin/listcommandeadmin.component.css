@@ -1,0 +1,79 @@
+/* Style for the container */
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 200vh;
+}
+
+/* Style for the card */
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 1000px;
+  height: auto;
+}
+
+/* Style the card header */
+.card-header {
+  background-color: #ffa34e;
+  color: #fff;
+  padding: 15px;
+  border-bottom: none;
+}
+
+/* Style the card title */
+.card-header h3 {
+  margin: 0;
+}
+
+/* Style the card body */
+.card-body {
+  padding: 15px;
+}
+
+/* Style the table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+/* Style the table headings */
+.table th {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style the table rows */
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style for the "Supprimer Commande" button */
+.btn-danger {
+  background-color: #c82333;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #000000;
+}
+
+/* Style for the "Voir la Liste des livraisons" button */
+.btn-success {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  margin-top: 20px;
+}
+
+.btn-success:hover {
+  background-color: #000000;
+}

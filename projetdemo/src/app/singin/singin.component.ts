@@ -29,12 +29,12 @@ export class SinginComponent implements OnInit{
     if(this.forminput.valid){
       this.userserv.connect(this.forminput.controls["username"].value,this.forminput.controls["password"].value).subscribe(
         (authResult)=>{
-         this.userserv.saveuser(authResult.jwt,authResult.username,authResult.id,authResult.roles) 
+         this.userserv.saveuser(authResult.jwt,authResult.username,authResult.email,authResult.id,authResult.roles) 
          if(authResult.roles.includes("ADMINISTRATEUR")){
-          this.route.navigate(["/listusers"])
+          this.route.navigate(["/homeadmin"])
          }
          else{
-          this.route.navigate(["/headerclt"])
+          this.route.navigate(["/"])
           this.userserv.addPanierToUser(JSON.parse(sessionStorage.getItem("panier")!),this.userserv.getUserId()).subscribe((data)=>{
             this.usr=data
           })

@@ -1,0 +1,16 @@
+<div class="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item" [ngClass]="{ 'active': activeIndex === 0 }">
+        <ng-content select="[carousel-view-0]"></ng-content>
+      </div>
+      <div class="carousel-item" [ngClass]="{ 'active': activeIndex === 1 }">
+        <ng-content select="[carousel-view-1]"></ng-content>
+      </div>
+      <div class="carousel-item" [ngClass]="{ 'active': activeIndex === 2 }">
+        <ng-content select="[carousel-view-2]"></ng-content>
+      </div>
+    </div>
+    <a (click)="prev()" class="carousel-control-prev">Previous</a>
+    <a (click)="next()" class="carousel-control-next">Next</a>
+  </div>
+  

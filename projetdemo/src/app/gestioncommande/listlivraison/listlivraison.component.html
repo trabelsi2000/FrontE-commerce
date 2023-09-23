@@ -1,0 +1,47 @@
+<div class="centered-container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h3>La liste des livraisons</h3>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">nom</th>
+                  <th scope="col">prenom</th>
+                  <th scope="col">email</th>
+                  <th scope="col">tel</th>
+                  <th scope="col">l'etat de la livraison</th>
+                  <th scope="col">la date de la commande</th>
+                  <th scope="col">frais livraison</th>
+                  <th scope="col">delais livraison</th>
+                  <th scope="col">le prix total</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of listcmd">
+                  <td>{{ c.livraison.idliv }}</td>
+                  <td>{{ c.nom }}</td>
+                  <td>{{ c.prenom }}</td>
+                  <td>{{ c.emailadr }}</td>
+                  <td>{{ c.tel }}</td>
+                  <td>{{ c.livraison.etatLiv }}</td>
+                  <td>{{ c.cmdDate }}</td>
+                  <td>{{ c.livraison.fraisLiv }}</td>
+                  <td>{{ c.livraison.delaisLiv }}</td>
+                  <td>{{ c.livraison.prixtot }}</td>
+                  <td class="action-buttons"><button class="btn btn-danger" (click)="deleteLivraison(c.livraison.idliv)">Supprimer livraison</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

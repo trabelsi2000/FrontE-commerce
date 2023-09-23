@@ -15,6 +15,10 @@ export class PanierService {
   constructor(private httpclt:HttpClient){
 
   }
+  getPanierByidpanier(id:number):Observable<Panier>
+  {
+    return this.httpclt.get<Panier>(`http://localhost:8080/getpanierbyid/${id}`)
+  }
   getPanierByiduser(id:number):Observable<Panier>
   {
     return this.httpclt.get<Panier>(`http://localhost:8080/getPanierByiduser/${id}`)

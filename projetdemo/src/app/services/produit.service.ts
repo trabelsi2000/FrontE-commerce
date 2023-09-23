@@ -32,4 +32,10 @@ export class ProduitService {
     return this.httpclt.put(`http://localhost:8080/updateproduit/${id}`,prod)
    }
 
+   addImageToProduct(productId: number, file: File): Observable<Produit> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.httpclt.post<Produit>(`http://localhost:8080/addproduitimage/${productId}`, formData);
+  }
 }

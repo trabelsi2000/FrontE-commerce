@@ -1,3 +1,6 @@
-<button (click)="selectFile()">Add File</button>
-<label for="fileInput" class="hidden-label">Choose File</label>
-<input id="fileInput" type="file" (change)="onFileChange($event)" class="hidden-input" />
+<div class="file-upload-container">
+    <label for="file-upload" class="custom-file-upload">
+        Sélectionner un fichier
+    </label>
+    <input type="file" id="file-upload" (change)="onFileSelected($event, id)">
+</div>

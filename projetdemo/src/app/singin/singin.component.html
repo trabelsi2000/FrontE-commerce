@@ -1,13 +1,15 @@
 <div>
   <form action="" [formGroup]="forminput" class="row g-3">
-    <div class="col-md-6">
+    <div class="brand"><img src="assets/logoproj.png"></div>
+    <h1 style="text-align: center;">Connectez-vous</h1>
+    <div class="col-md-12">
       <label for="inputEmail4" class="form-label">Username</label>
       <input type="text" class="form-control" id="inputEmail4"formControlName="username">
       <div class="alert alert-danger" role="alert" *ngIf="this.forminput.controls['username'].errors?.['required'] && !this.forminput.pristine">
         username is required !!!!
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-12">
       <label for="inputPassword4" class="form-label">Password</label>
       <input type="password" class="form-control" id="inputPassword4" placeholder="Password" formControlName="password">
     </div>
@@ -15,8 +17,10 @@
         password is required !!!!
       </div>
     <div>
-
         <input type="submit" (click)="onsubmit()" value="signin">
+    </div>
+    <div class="col-md-12">
+      <p>Vous n'avez pas de compte ? <a href="/signup">s'inscrire</a></p>
     </div>
   </form>
 </div>

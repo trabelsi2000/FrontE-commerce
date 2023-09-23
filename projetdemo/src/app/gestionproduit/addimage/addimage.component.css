@@ -1,7 +1,31 @@
-.hidden-label {
-    display: none;
-  }
-  
-  .hidden-input {
-    display: none;
-  }
+/* Style du conteneur pour le champ de téléchargement de fichier */
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Style du bouton de téléchargement personnalisé */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #ff6600; /* Couleur de fond du bouton */
+  color: #fff; /* Couleur du texte du bouton */
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Changement de couleur de fond au survol */
+.custom-file-upload:hover {
+  background-color: #000000; /* Nouvelle couleur de fond au survol */
+}
+
+/* Style pour cacher le champ de téléchargement de fichier par défaut */
+input[type="file"] {
+  display: none;
+}

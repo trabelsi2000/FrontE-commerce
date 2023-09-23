@@ -1,9 +1,14 @@
-<h3>Update Equipe</h3>
-<form class="form" (ngSubmit)="onSubmit()">
+<div class="signup-container">
+    <form class="form" (ngSubmit)="onSubmit()">
+        <h1 style="text-align: center;">Modifier une catégorie</h1>
+        <div class="mb-3">
+            <label class="form-label">Nouveau nom du catégorie</label>
+            <input class="form-control" type="text" id="FirstName" [(ngModel)]="categorie.catlib" name="FirstName">
+        </div>
 
-    <div class="mb-3" >
-        <label class="form-label" >Nouveau nom de categorie</label>
-        <input class="form-control" type="text" id="FirstName" [(ngModel)]="categorie.catlib" name="FirstName" >
-    </div>
-    <button class="btn btn-primary" type="submit">Update Categorie</button>
-</form>
+        <div class="button-container">
+            <button class="btn btn-primary" type="submit">modifier</button>
+        </div>
+
+    </form>
+</div>

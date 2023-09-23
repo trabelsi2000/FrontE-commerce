@@ -1,0 +1,19 @@
+<form [formGroup]="forminput" class="mb-3">
+    <div class="brand"><img src="assets/logoproj.png"></div>
+    <h1 style="text-align: center;"></h1>
+    <div class="mb-3">
+        <label for="inputPassword1" class="form-label"></label>
+        <input type="password" class="form-control" id="inputPassword1" placeholder="Mot de passe actuel" formControlName="ancienpassword">
+      </div>
+    <div class="mb-3">
+      <label for="inputPassword4" class="form-label"></label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="nouveau mot de passe" formControlName="password">
+    </div>
+    <div class="mb-3">
+      <label for="inputConfirmPassword" class="form-label"></label>
+      <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" formControlName="confirmPassword">
+    </div>
+    <div class="mb-3">
+      <input type="submit" (click)="register()" value="Enregistrer">
+    </div>
+  </form>

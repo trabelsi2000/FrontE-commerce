@@ -5,6 +5,8 @@ import { Utilisateur } from '../models/Utilisateur.model';
 import { UtilisateurService } from '../services/utilisateur.service';
 import { LignePanierService } from '../services/ligne-panier.service';
 import { Route, Router } from '@angular/router';
+import { AdresseService } from '../services/adresse.service';
+import { Adresse } from '../models/Adresse.model';
 
 @Component({
   selector: 'app-panier',
@@ -13,6 +15,7 @@ import { Route, Router } from '@angular/router';
 })
 export class PanierComponent implements OnInit{
 
+  idadress!:number
   idlignepan!:number
   qte!:number
   id!:number
@@ -20,9 +23,11 @@ export class PanierComponent implements OnInit{
   panier!:Panier
   iduser!:number
   montantTotal: number = 0; 
-  constructor(private route:Router,private panserv:PanierService,private userserv:UtilisateurService,private lpserv:LignePanierService){
+  constructor(private route:Router,private panserv:PanierService,private userserv:UtilisateurService,private lpserv:LignePanierService,private adressserv:AdresseService){
      this.iduser=this.userserv.getUserId()
-     
+     this.adressserv.getAdressById(this.iduser).subscribe((data)=>{
+          this.idadress=data.idAdr
+     })
   }
  
 
@@ -59,7 +64,11 @@ export class PanierComponent implements OnInit{
     }
  
     goToAdresscommande(idp:number){
+      if(this.idadress!=null)
          this.route.navigate(["/adresscommande",idp])
+        else{
+          this.route.navigate(["/addadress",idp])
+        }
     }
   
 }
