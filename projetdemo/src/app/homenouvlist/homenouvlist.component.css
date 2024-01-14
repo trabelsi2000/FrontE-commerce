@@ -9,7 +9,7 @@
 .cardBlog {
   overflow: scroll;
   max-height: fit-content;
-  height: 450px;
+  height: 460px;
   border-radius: 10px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -46,7 +46,6 @@
 
 .card_text {
   font-size: 0.9rem;
-  padding: 10px;
 }
 
 .a {

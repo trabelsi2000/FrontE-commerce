@@ -7,8 +7,12 @@
         <img class="cards_img" src="/assets/{{prod.img.imageLib}}" />
         <h4 class="card_title">{{prod.prodDescription}}</h4>
         <p class="card_text">Prix : {{prod.prodPrix}}</p>
-        <p class="card_text">disponibilité : {{prod.prodDispo}}</p>
-        <button class="btn btn-primary" (click)="addProduitToCart(this.userId , prod.prodref , 1)" >Ajouter au panier</button>
+        <p class="card_text">disponible : {{prod.prodDispo}}</p>
+        <p class="card_text">{{prod.taille}}</p>
+        <button class="btn btn-primary" (click)="addProduitToCart(this.userId , prod.prodref , 1,prod)"  >Ajouter au panier</button>
+        <div class="alert alert-warning" *ngIf="prod.addedToCart" role="alert">
+          Produit ajouté au panier !
+      </div>
       </div>
     </div>
   </div>

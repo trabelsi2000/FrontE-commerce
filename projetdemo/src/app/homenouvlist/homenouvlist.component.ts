@@ -8,6 +8,7 @@ import { Ligne_panier } from '../models/Ligne_panier.model';
 import { Produit } from '../models/Produit.model';
 import { Categorie } from '../models/Categorie.model';
 import { CategorieService } from '../services/categorie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homenouvlist',
@@ -28,7 +29,8 @@ export class HomenouvlistComponent implements OnInit{
               private Ligne_panierser: LignePanierService,
               private userser: UtilisateurService,
               private panierserv: PanierService,
-              private catserv:CategorieService
+              private catserv:CategorieService,
+              private router:Router
        ){}
   ngOnInit(): void {
     this.categorie= new Categorie
@@ -41,10 +43,20 @@ export class HomenouvlistComponent implements OnInit{
       this.categorie=data
     })
   }
-  addProduitToCart(userId:number,idProduct:number,quantity:number){
+  addProduitToCart(userId:number,idProduct:number,quantity:number,product:Produit){
+    const jwt = sessionStorage.getItem('jwt');
+    if (jwt) {
     this.Ligne_panierser.addProduitToLignePanier(this.userId,idProduct,quantity).subscribe((data)=>{
       this.lp=data
       this.panierserv.addLignepanierToPanier(this.lp)
+
+      product.addedToCart = true;
+      setTimeout(() => {
+          product.addedToCart = false;
+      }, 3000);
     })
+  } else {
+    this.router.navigate(['/signin']);
+  }
   }
 }

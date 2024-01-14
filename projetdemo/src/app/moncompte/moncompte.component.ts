@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MoncompteComponent implements OnInit{
 
+  
   id!:number;
   user!:Utilisateur;
   constructor(private userserv:UtilisateurService,private router:Router){}
@@ -27,6 +28,7 @@ export class MoncompteComponent implements OnInit{
    this.userserv.updateUser(this.id,this.user).subscribe(data=>{
     this.goToUserList();
  }, error => console.log(error));
+    
   }
   
   goToUserList(){

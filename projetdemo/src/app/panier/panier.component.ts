@@ -15,6 +15,7 @@ import { Adresse } from '../models/Adresse.model';
 })
 export class PanierComponent implements OnInit{
 
+  Alert: boolean = false;
   idadress!:number
   idlignepan!:number
   qte!:number
@@ -44,7 +45,14 @@ export class PanierComponent implements OnInit{
   deleteLignepanier(id: number) {
     this.lpserv.supprimerLignepanierDuPanier(id).subscribe(()=>{});
     this.getPanier();
-    location.reload()
+    
+    setTimeout(() => {
+      this.Alert = true;
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+    }, 0);
+    
   }
   calculerMontantTotal():number{
     this.panserv.calculerMontantTotalPanier(this.iduser).subscribe(amount => {

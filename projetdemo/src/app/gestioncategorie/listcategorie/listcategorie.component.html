@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="centered-container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -24,6 +25,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="alert alert-warning" role="alert" *ngIf="Alert">
+                    catégorie supprimé avec succès!
                 </div>
                 <div class="card-button text-center">
                     <button class="btn btn-warning" (click)="goToAddCategorie()" routerLink="/addcategorie">Ajouter Catégorie</button>

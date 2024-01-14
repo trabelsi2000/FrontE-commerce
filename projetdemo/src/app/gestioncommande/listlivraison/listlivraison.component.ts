@@ -12,6 +12,7 @@ import { CommandeService } from '../../services/commande.service';
 })
 export class ListlivraisonComponent implements OnInit{
 
+  Alert: boolean = false;
   listcmd:Commande[]=[]
   idliv!:number
   constructor(private livserv:LivraisonService,private cmdserv:CommandeService,private route:Router)
@@ -32,6 +33,13 @@ export class ListlivraisonComponent implements OnInit{
   deleteLivraison(idliv:number){
       this.livserv.clearLivraisonAndCommande(idliv).subscribe(()=>{})
       this.getLivraison
-      location.reload()
+      
+      setTimeout(() => {
+        this.Alert = true;
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
+      }, 0);
+   
   }
 }

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ListusersComponent implements OnInit{
 
+  Alert: boolean = false;
   listusr:Utilisateur[]=[]
   constructor(private userserv:UtilisateurService,private route:Router){
 
@@ -25,7 +26,12 @@ export class ListusersComponent implements OnInit{
     this.userserv.deleteUser(id).subscribe(data => {
       this.userserv.getAllUsers();
     })
-    location.reload();
+    setTimeout(() => {
+      this.Alert = true;
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+    }, 0);
     }
   
     updateUser(id:number){

@@ -11,6 +11,7 @@ import { ProduitService } from 'src/app/services/produit.service';
 })
 export class ListproduitComponent implements OnInit{
 
+  Alert: boolean = false;
   listproduits:Produit[]=[]
   constructor(private prodserv:ProduitService,private route:Router){}
 
@@ -27,7 +28,12 @@ export class ListproduitComponent implements OnInit{
       console.log(data);
       this.prodserv.getAllprods();
     })
-    location.reload();
+    setTimeout(() => {
+      this.Alert = true;
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+    }, 0);
     }
   
     updateProduit(id:number){

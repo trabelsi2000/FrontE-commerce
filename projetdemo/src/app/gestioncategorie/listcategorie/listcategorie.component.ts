@@ -12,6 +12,7 @@ import { CategorieService } from 'src/app/services/categorie.service';
 })
 export class ListcategorieComponent implements OnInit {
 
+  Alert: boolean = false;
   listproduits:Produit[]=[]
   categories:Categorie[]=[]
   constructor(private categorieService:CategorieService,private route:Router){
@@ -29,10 +30,14 @@ export class ListcategorieComponent implements OnInit {
   
   deleteCategorie(catid:number){
   this.categorieService.deleteCategorie(catid).subscribe(data => {
-    console.log(data);
     this.getCategorie();
   })
-  location.reload();
+  setTimeout(() => {
+    this.Alert = true;
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
+  }, 0);
   }
 
   updateCategorie(id:number){

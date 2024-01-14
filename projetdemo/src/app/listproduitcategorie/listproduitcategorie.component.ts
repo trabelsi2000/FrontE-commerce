@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProduitService } from '../services/produit.service';
 import { Produit } from '../models/Produit.model';
 import { Categorie } from 'src/app/models/Categorie.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { LignePanierService } from '../services/ligne-panier.service';
 import { UtilisateurService } from '../services/utilisateur.service';
 import { Ligne_panier } from '../models/Ligne_panier.model';
@@ -23,9 +23,8 @@ export class ListproduitcategorieComponent implements OnInit{
   userId!:number
   idProduct!:number
   quantity!:number
-  produit!:Produit
 
-  constructor(private prodserv:ProduitService ,private route:ActivatedRoute , private Ligne_panierser : LignePanierService , private userser : UtilisateurService, private panierserv : PanierService,private catserv:CategorieService){
+  constructor(private prodserv:ProduitService ,private route:ActivatedRoute , private Ligne_panierser : LignePanierService , private userser : UtilisateurService, private panierserv : PanierService,private catserv:CategorieService,private router:Router){
 
   }
   ngOnInit(): void {
@@ -39,13 +38,23 @@ export class ListproduitcategorieComponent implements OnInit{
     this.catserv.getCategorieById(this.id).subscribe((data)=>{
       this.categorie=data
     })
+    
   }
-  addProduitToCart(userId:number,idProduct:number,quantity:number){
+
+  addProduitToCart(userId:number,idProduct:number,quantity:number,product:Produit){
+    const jwt = sessionStorage.getItem('jwt');
+    if (jwt) {
     this.Ligne_panierser.addProduitToLignePanier(this.userId,idProduct,quantity).subscribe((data)=>{
       this.lp=data
       this.panierserv.addLignepanierToPanier(this.lp)
+
+      product.addedToCart = true;
+      setTimeout(() => {
+          product.addedToCart = false;
+      }, 3000);
     })
-    
+  } else {
+    this.router.navigate(['/signin']);
   }
 }
-
+}

@@ -27,6 +27,8 @@
 </table>
 <p> le montant total :{{montantTotal}}</p>    
 <button class="btn btn-primary" (click)="goToAdresscommande(panier.idpanier)">Suivant</button>       
-
+<div class="alert alert-warning" role="alert" *ngIf="Alert">
+    Le produit a été supprimé de votre panier avec succès!
+</div>
 
 

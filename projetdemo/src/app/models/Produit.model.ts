@@ -15,4 +15,5 @@ export class Produit{
     categorie!:Categorie
     listpaniers!:Ligne_panier[]
     img!:Image
+    addedToCart: boolean = false;
 }
